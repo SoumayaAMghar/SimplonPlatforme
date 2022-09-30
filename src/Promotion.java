@@ -1,21 +1,54 @@
 import java.util.ArrayList;
 
 public class Promotion {
-    public String promoName;
-    public ArrayList<Apprenant> students;
-    public String formateur;
+
+
+    private String promoName;
+    private  ArrayList<Apprenant> students;
+    private String formateurName;
 
     public Promotion(String promoName, String formateur,ArrayList<Apprenant> students){
         this.promoName= promoName;
         this.students= students;
-        this.formateur= formateur;
+        this.formateurName= formateur;
+    }
+    public Promotion(String promoName, String formateur){
+        this.promoName= promoName;
+        this.students= students;
+        this.formateurName= formateur;
+        this.students = new ArrayList<>();
+    }
+    public String getPromoName() {
+        return promoName;
     }
 
-    public void display(){
-        System.out.println("formateur"+this.formateur);
-        System.out.println("name"+this.promoName);
-        for (Apprenant student : this.students) {
-            student.display();
-        }
+    public void setPromoName(String promoName) {
+        this.promoName = promoName;
+    }
+
+    public String getFormateurName() {
+        return formateurName;
+    }
+
+    public void setFormateurName(String formateur) {
+        this.formateurName = formateur;
+    }
+
+    public ArrayList<Apprenant> getStudents() {
+        return students;
+    }
+
+    public void setStudents(ArrayList<Apprenant> students) {
+        this.students = students;
+    }
+
+    @Override
+    public String toString() {
+        return
+                super.toString()+" Promotion{" +
+                "promoName='" + promoName + '\'' +
+                ", students=" + students +
+                ", formateur='" + formateurName + '\'' +
+                '}';
     }
 }
