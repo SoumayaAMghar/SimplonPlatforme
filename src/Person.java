@@ -1,22 +1,17 @@
 public class Person {
-    private String firstname;
-    private String lastname;
-    private String email;
-    private String password;
+    protected String firstname;
+    protected String lastname;
+    protected String email;
+    protected String password;
 
-    Person(String firstname, String lastname, String email, String password){
+    public Person(String firstname,String lastname,String email,String password)
+    {
         this.setFirstname(firstname);
         this.setLastname(lastname);
         this.setEmail(email);
         this.setPassword(password);
     }
-    public void AfficherPerson(String firstname, String lastname, String email, String password){
-        this.getFirstname();
-        this.getLastname();
-        this.getEmail();
-        this.getPassword();
-       // system.out.println(objperson(firstname,lastname,email,password));
-    }
+    public Person(){}
 
     public String getFirstname() {
         return firstname;
