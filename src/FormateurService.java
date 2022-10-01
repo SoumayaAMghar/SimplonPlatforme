@@ -12,15 +12,15 @@ public class FormateurService {
         boolean flag = false;
         ArrayList<Apprenant> students = new ArrayList<>();
         ArrayList<Brief> briefs = new ArrayList<>();
-        students.add(new Apprenant("firstname", "lastname", "email.com", "password"));
-        students.add(new Apprenant("firstname1", "lastname1", "email1.com", "password1"));
-        students.add(new Apprenant("firstname2", "lastname2", "email2.com", "password2"));
+        students.add(new Apprenant(true,"firstname", "lastname", "ettaqui88@gmail.com", "password"));
+        students.add(new Apprenant(true,"firstname1", "lastname1", "ettaqui88@gmail.com", "password1"));
+        students.add(new Apprenant(true, "firstname2", "lastname2", "ettaqui88@gmail.com", "password2"));
 
         AdminService.getPromotions().add(new Promotion("alan turing", "formateur1", students, briefs));
 
-        AdminService.getApprenants().add(new Apprenant("firstname2", "lastname2", "email2.com", "password2"));
-        AdminService.getApprenants().add(new Apprenant("firstname1", "lastname1", "email1.com", "password1"));
-        AdminService.getApprenants().add(new Apprenant("firstname", "lastname", "email.com", "password"));
+        AdminService.getApprenants().add(new Apprenant(true,"firstname2", "lastname2", "ettaqui88@gmail.com", "password2"));
+        AdminService.getApprenants().add(new Apprenant(true,"firstname1", "lastname1", "ettaqui88@gmail.com", "password1"));
+        AdminService.getApprenants().add(new Apprenant(true,"firstname", "lastname", "ettaqui88@gmail.com", "password"));
         ArrayList<Formateur> formateurs = new ArrayList<>();
         AdminService.getFormateurs().add(new Formateur("formateur1", "formateur1", "formateur1.com", "formateur1"));
         AdminService.getFormateurs().add(new Formateur("formateur2", "formateur2", "formateur2.com", "formateur2"));
@@ -44,6 +44,12 @@ public class FormateurService {
 
     public void AddApprenant() {
 
+        System.out.println("Voici la liste des apprenants");
+        for (int i = 0; i < AdminService.getApprenants().size(); i++) {
+                    System.out.println(AdminService.getApprenants().get(i));
+
+
+        }
         for (int i = 0; i < AdminService.getPromotions().size(); i++) {
             if (AdminService.getPromotions().get(i).getFormateurName().equals(AdminService.getFormateurs().get(i).getLastname())) {
                 System.out.println("entrer la list des apprenants sous forme de (1-2-3-4-5)");
@@ -86,6 +92,9 @@ public class FormateurService {
                 for (int i = 0; i < listBriefs.length; i++) {
                     AdminService.getPromotions().get(i).getBriefs().add(briefs.get(Integer.parseInt(listBriefs[i])));
                     System.out.println(AdminService.getPromotions());
+                }
+                for (int i =0 ;i<AdminService.getPromotions().get(j).getStudents().size();i++){
+                   SendingEmail.send(AdminService.getPromotions().get(j).getStudents().get(i).getEmail());
                 }
             }
         }

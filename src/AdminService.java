@@ -36,7 +36,7 @@ public class AdminService {
         String email = scanner.next();
         System.out.println("Entrer le password de l'apprenant");
         String password = scanner.next();
-        apprenants.add( new Apprenant(firstname, lastname, email,password) );
+        apprenants.add( new Apprenant(false,firstname, lastname, email,password) );
     }
 
     public static void DisplayApprenant(){
