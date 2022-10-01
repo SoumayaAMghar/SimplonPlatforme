@@ -6,6 +6,7 @@ public class FormateurService {
     protected static Scanner scanner = new Scanner(System.in);
 
     private ArrayList<Brief> briefs  = new ArrayList<>();
+    private static int indiceFormateur;
 
     public static boolean login(){
         boolean flag=false;
@@ -31,6 +32,7 @@ public class FormateurService {
             if (email.equals(AdminService.getFormateurs().get(i).getEmail()) && password.equals(AdminService.getFormateurs().get(i).getPassword())){
                 System.out.println("welcome");
                     flag=true;
+                    indiceFormateur = i;
             }
         }
         return flag;
@@ -60,12 +62,23 @@ public class FormateurService {
         briefTitle = scanner.next();
         System.out.println("Enter la description du brief");
         briefContext = scanner.next();
-
-        briefs.add(new Brief(briefTitle,briefContext));
+        briefs.add(new Brief(briefTitle,briefContext,AdminService.getFormateurs().get(indiceFormateur)));
         System.out.println(briefs);
     }
     public void AssignBrief(){
+        Promotion promotion = new Promotion();
+        System.out.println("Voici la liste des briefs");
+        //System.out.println(briefs);
+        for (int i = 0 ; i <briefs.size() ; i++){
+           if(AdminService.getFormateurs().get(indiceFormateur).equals(briefs.get(i).getFormateur())){
+               System.out.println(briefs.get(i));
+           }
+        }
+        System.out.println("Entrer l'indice du brief(s) à distribuer sous forme de(0-1-2-3)");
+        String[] listBriefs = scanner.next().split("-");
+        for (int i=0; i<listBriefs.length; i++){
+            System.out.println(briefs.get(Integer.parseInt(listBriefs[i])));
 
-
+        }
     }
 }

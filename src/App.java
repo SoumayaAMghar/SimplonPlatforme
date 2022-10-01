@@ -69,11 +69,13 @@ public class App {
         else{
             System.out.println("1- ajouter apprenants à la promotion ");
             System.out.println("2- créer un brief ");
+            System.out.println("3- Distribuer brief(s) ");
             System.out.println("0- Main menu");
 
             switch (scanner.nextInt()) {
                 case 1 -> formateurService.AddApprenant();
                 case 2 -> formateurService.AddBrief();
+                case 3 -> formateurService.AssignBrief();
                 case 0 ->{
                     admin=false;
                     formateur=false;

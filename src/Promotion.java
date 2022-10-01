@@ -21,6 +21,9 @@ public class Promotion {
         this.briefs= briefs;
 
     }
+    public Promotion(){
+
+    }
     public String getPromoName() {
         return promoName;
     }

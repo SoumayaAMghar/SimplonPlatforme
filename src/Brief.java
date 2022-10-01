@@ -2,10 +2,20 @@ public class Brief {
 
     private String title;
     private String description;
+    private Formateur formateur;
 
-    public Brief(String title, String description) {
+    public Formateur getFormateur() {
+        return formateur;
+    }
+
+    public void setFormateur(Formateur formateur) {
+        this.formateur = formateur;
+    }
+
+    public Brief(String title, String description, Formateur formateur) {
         this.title = title;
         this.description = description;
+        this.formateur= formateur;
 
     }
 
