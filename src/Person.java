@@ -53,6 +53,6 @@ public class Person {
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                '}';
+                '}'+"\n";
     }
 }

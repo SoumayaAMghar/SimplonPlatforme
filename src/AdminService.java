@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdminService {
-    protected final Scanner scanner = new Scanner(System.in);
-    private ArrayList<Formateur> formateurs = new ArrayList<>();
-    private ArrayList<Apprenant> apprenants = new ArrayList<>();
-    private   ArrayList<Promotion> promotions = new ArrayList<>();
-    private   ArrayList<Apprenant> ApprenantInPromo = new ArrayList<>();
-    public  void CreateFormateur() {
+    protected static final Scanner scanner = new Scanner(System.in);
+    private static ArrayList<Formateur> formateurs = new ArrayList<>();
+    private static ArrayList<Apprenant> apprenants = new ArrayList<>();
+    private static ArrayList<Promotion> promotions = new ArrayList<>();
+    private static ArrayList<Apprenant> ApprenantInPromo = new ArrayList<>();
+    public static void CreateFormateur() {
         System.out.println("Entrer le prenom du formateur");
         String firstname = scanner.next();
         System.out.println("Entrer le nom du formateur");
@@ -16,16 +16,17 @@ public class AdminService {
         String email = scanner.next();
         System.out.println("Entrer le password du formateur");
         String password = scanner.next();
-        formateurs.add( new Formateur(firstname, lastname, email,password) );
+        getFormateurs().add( new Formateur(firstname, lastname, email,password) );
+
     }
 
-    public void DisplayFormateur(){
+    public static void DisplayFormateur(){
 
         for (Formateur formateur : formateurs) {
             formateur.display();
         }
     }
-    public void CreateApprenant(){
+    public static void CreateApprenant(){
         System.out.println("Entrer le prenom de l'apprenant");
         String firstname = scanner.next();
         System.out.println("Entrer le nom de l'apprenant");
@@ -37,12 +38,12 @@ public class AdminService {
         apprenants.add( new Apprenant(firstname, lastname, email,password) );
     }
 
-    public void DisplayApprenant(){
+    public static void DisplayApprenant(){
         for(int i=0;i< apprenants.size();i++){
             System.out.print(i + ". "+apprenants.get(i));
         }
     }
-    public void createPromotion(){
+    public static void createPromotion(){
         System.out.println("Entrer le nom de la promotion");
         String promoName = scanner.next();
         System.out.println("Entrer le nom du formateur");
@@ -64,7 +65,7 @@ public class AdminService {
         DisplayPromotion();
     }
 
-    public void DisplayPromotion(){
+    public static void DisplayPromotion(){
 
         for (Promotion promotion : promotions) {
 
@@ -75,35 +76,34 @@ public class AdminService {
 
     //
 
-    public ArrayList<Formateur> getFormateurs() {
+    public static ArrayList<Formateur> getFormateurs() {
         return formateurs;
     }
 
-    public void setFormateurs(ArrayList<Formateur> formateurs) {
-        this.formateurs = formateurs;
+    public static void setFormateurs(ArrayList<Formateur> formateurs) {
+        formateurs = formateurs;
     }
 
-    public ArrayList<Apprenant> getApprenants() {
+    public static ArrayList<Apprenant> getApprenants() {
         return apprenants;
     }
 
-    public void setApprenants(ArrayList<Apprenant> apprenants) {
-        this.apprenants = apprenants;
+    public static void setApprenants(ArrayList<Apprenant> apprenants) {apprenants = apprenants;
     }
 
-    public ArrayList<Promotion> getPromotions() {
+    public static ArrayList<Promotion> getPromotions() {
         return promotions;
     }
 
-    public void setPromotions(ArrayList<Promotion> promotions) {
-        this.promotions = promotions;
+    public static void setPromotions(ArrayList<Promotion> promotions) {
+        promotions = promotions;
     }
 
-    public ArrayList<Apprenant> getApprenantInPromo() {
+    public static ArrayList<Apprenant> getApprenantInPromo() {
         return ApprenantInPromo;
     }
 
-    public void setApprenantInPromo(ArrayList<Apprenant> apprenantInPromo)
+    public static void setApprenantInPromo(ArrayList<Apprenant> apprenantInPromo)
     {
         ApprenantInPromo = apprenantInPromo;
     }

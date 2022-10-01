@@ -7,16 +7,19 @@ public class Promotion {
     private  ArrayList<Apprenant> students;
     private String formateurName;
 
+    private  ArrayList<Brief> briefs;
+
     public Promotion(String promoName, String formateur,ArrayList<Apprenant> students){
         this.promoName= promoName;
-        this.students= students;
         this.formateurName= formateur;
+        this.students= students;
     }
-    public Promotion(String promoName, String formateur){
+    public Promotion(String promoName, String formateur,ArrayList<Apprenant> students, ArrayList<Brief> briefs){
         this.promoName= promoName;
-        this.students= students;
         this.formateurName= formateur;
-        this.students = new ArrayList<>();
+        this.students= students;
+        this.briefs= briefs;
+
     }
     public String getPromoName() {
         return promoName;
