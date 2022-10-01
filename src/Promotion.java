@@ -6,23 +6,22 @@ public class Promotion {
     private String promoName;
     private  ArrayList<Apprenant> students;
     private String formateurName;
+    private  ArrayList<Brief> briefs = new ArrayList<>();
+    public ArrayList<Brief> getBriefs() {
+        return briefs;
+    }
 
-    private  ArrayList<Brief> briefs;
+    public void setBriefs(ArrayList<Brief> briefs) {
+        this.briefs = briefs;
+    }
 
-    public Promotion(String promoName, String formateur,ArrayList<Apprenant> students){
+
+
+    public Promotion(String promoName, String formateur,ArrayList<Apprenant> students,ArrayList<Brief> briefs ){
         this.promoName= promoName;
         this.formateurName= formateur;
         this.students= students;
-    }
-    public Promotion(String promoName, String formateur,ArrayList<Apprenant> students, ArrayList<Brief> briefs){
-        this.promoName= promoName;
-        this.formateurName= formateur;
-        this.students= students;
-        this.briefs= briefs;
-
-    }
-    public Promotion(){
-
+        this.briefs =briefs;
     }
     public String getPromoName() {
         return promoName;
@@ -55,6 +54,7 @@ public class Promotion {
                 "promoName='" + promoName + '\'' +
                 ", students=" + students +
                 ", formateur='" + formateurName + '\'' +
+                " , briefs= " + briefs +  '\'' +
                 '}';
     }
 }

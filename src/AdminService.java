@@ -7,6 +7,7 @@ public class AdminService {
     private static ArrayList<Apprenant> apprenants = new ArrayList<>();
     private static ArrayList<Promotion> promotions = new ArrayList<>();
     private static ArrayList<Apprenant> ApprenantInPromo = new ArrayList<>();
+    private static ArrayList<Brief> briefs = new ArrayList<>();
     public static void CreateFormateur() {
         System.out.println("Entrer le prenom du formateur");
         String firstname = scanner.next();
@@ -57,7 +58,7 @@ public class AdminService {
         for (String s : list) {
             ApprenantInPromo.add(apprenants.get(Integer.parseInt(s)));
         }
-        promotions.add(new Promotion(promoName, formateurName,ApprenantInPromo));
+        promotions.add(new Promotion(promoName, formateurName,ApprenantInPromo,briefs));
 
         //}else{
         //    System.out.println("S'il vous plait tapez un nombre correct");
