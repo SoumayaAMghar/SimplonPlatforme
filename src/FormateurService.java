@@ -12,9 +12,9 @@ public class FormateurService {
         boolean flag = false;
         ArrayList<Apprenant> students = new ArrayList<>();
         ArrayList<Brief> briefs = new ArrayList<>();
-        students.add(new Apprenant(true,"firstname", "lastname", "ettaqui88@gmail.com", "password"));
-        students.add(new Apprenant(true,"firstname1", "lastname1", "ettaqui88@gmail.com", "password1"));
-        students.add(new Apprenant(true, "firstname2", "lastname2", "ettaqui88@gmail.com", "password2"));
+        students.add(new Apprenant(true,"soumaya", "amghar", "amghar.souma@gmail.com", "password"));
+        students.add(new Apprenant(true,"abdelghafour", "ettaqui", "ettaqui88@gmail.com", "password1"));
+        students.add(new Apprenant(true, "abdelghafour", "abdelghafour", "ettaqui88@gmail.com", "password2"));
 
         AdminService.getPromotions().add(new Promotion("alan turing", "formateur1", students, briefs));
 
