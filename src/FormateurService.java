@@ -92,10 +92,11 @@ public class FormateurService {
                 for (int i = 0; i < listBriefs.length; i++) {
                     AdminService.getPromotions().get(i).getBriefs().add(briefs.get(Integer.parseInt(listBriefs[i])));
                     System.out.println(AdminService.getPromotions());
+                    for (int m =0 ;m<AdminService.getPromotions().get(j).getStudents().size();m++){
+                        SendingEmail.send(AdminService.getPromotions().get(j).getStudents().get(m).getEmail(),AdminService.getPromotions().get(j).getStudents().get(m).getFirstname(),AdminService.getPromotions().get(j).getStudents().get(m).getLastname(),briefs.get(Integer.parseInt(listBriefs[i])).getTitle());
+                    }
                 }
-                for (int i =0 ;i<AdminService.getPromotions().get(j).getStudents().size();i++){
-                   SendingEmail.send(AdminService.getPromotions().get(j).getStudents().get(i).getEmail());
-                }
+
             }
         }
 

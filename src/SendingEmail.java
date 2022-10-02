@@ -10,13 +10,13 @@ import javax.mail.internet.MimeMessage;
 
 public class SendingEmail {
 
-    public static void send(String toAddress) {
-        System.out.println("tesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssst");
+    public static void send(String toAddress,String firstname,String lastname,String brief) {
+
         // Recipient's email ID needs to be mentioned.
-        String to = "chabarou.nourelhouda@gmail.com";
+        String to = toAddress;
 
         // Sender's email ID needs to be mentioned
-        String from = toAddress;
+        String from = "abdelghafourdev@gmail.com";
 
         // Assuming you are sending email from through gmails smtp
         String host = "smtp.gmail.com";
@@ -35,7 +35,7 @@ public class SendingEmail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("chabarou.nourelhouda@gmail.com", "houda@chabarou@123");
+                return new PasswordAuthentication("abdelghafourdev@gmail.com", "nkkumlcylzxboqzp");
 
             }
 
@@ -58,7 +58,18 @@ public class SendingEmail {
             message.setSubject("This is the Subject Line!");
 
             // Now set the actual message
-            message.setText("This is actual message");
+            message.setText( "Bonjour "+firstname+" " +lastname+
+                    "\n" +
+                    "Votre formateur.rice vous a assigné un le nouveau brief "+  brief +"  dans le cadre d’un projet de groupe !\n" +
+                    "\n" +
+                    "Rendez-vous sur la plateforme pour le consulter avec le reste de votre groupe. Définissez et créez les tâches au sein de ce projet dont vous allez vous occuper individuellement.\n" +
+                    "\n" +
+                    "Une fois que vous aurez chacun.e soumis vos rendus, votre formateur.rice pourra consulter vos tâches, l'ensemble du (ou des) rendu(s) et vous évaluer.\n" +
+                    "\n" +
+                    "En cas de questions, contactez votre formateur ou formatrice.\n" +
+                    "\n" +
+                    "A bientôt,\n" +
+                    "L’équipe Simplonline.");
 
             System.out.println("sending...");
             // Send message
