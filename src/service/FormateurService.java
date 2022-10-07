@@ -1,3 +1,7 @@
+package service;
+
+import service.AdminService;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -31,7 +35,7 @@ public class FormateurService {
         String email = scanner.next();
         System.out.println("Entrer votre password");
         String password = scanner.next();
-        //System.out.println(AdminService.getFormateurs().size());
+        //System.out.println(service.AdminService.getFormateurs().size());
         for (int i = 0; i < AdminService.getFormateurs().size(); i++) {
             if (email.equals(AdminService.getFormateurs().get(i).getEmail()) && password.equals(AdminService.getFormateurs().get(i).getPassword())) {
                 System.out.println("welcome");

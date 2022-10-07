@@ -1,20 +1,24 @@
+import service.AdminService;
+import service.FormateurService;
+
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class App {
     private static final Scanner scanner = new Scanner(System.in);
     private static AdminService adminService = new AdminService();
+
     private static FormateurService formateurService = new FormateurService();
     private static boolean formateur=false;
     private static boolean admin=false;
     private static boolean login=false;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         while(true){
             displayMainMenu();
         }
     }
-    public static void displayMainMenu() {
-
+    public static void displayMainMenu() throws Exception {
         System.out.println("Si vous etes admin tapez 0");
         System.out.println("Si vous etes formateur tapez 1");
         int role = scanner.nextInt();
@@ -23,7 +27,7 @@ public class App {
                 admin=true;
                 login=false;
                 while (admin) {
-                    seriveAdmin();
+                    serviceAdmin();
                 }
             }
             case 1 ->{
@@ -37,7 +41,7 @@ public class App {
 
     }
 
-    public static void seriveAdmin() {
+    public static void serviceAdmin() throws Exception {
 
         System.out.println("1- ajouter formateur ");
         System.out.println("2- afficher formateur ");
@@ -60,7 +64,7 @@ public class App {
         }
 
     }
-    public static  void serviceFormateur(){
+    public static  void serviceFormateur() throws Exception {
 
         if(!login){
 
@@ -87,8 +91,4 @@ public class App {
 
 
     }
-
-
-
-
 }

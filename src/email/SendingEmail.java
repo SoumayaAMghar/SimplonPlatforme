@@ -1,3 +1,5 @@
+package email;
+
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -35,7 +37,7 @@ public class SendingEmail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("soumayaamghardev@gmail.com", "gpqoptmlqjbdpsek");
+                return new PasswordAuthentication(Creds.mail, Creds.password);
 
             }
 
@@ -60,13 +62,13 @@ public class SendingEmail {
             // Now set the actual message
             message.setText( "Bonjour "+firstname+" " +lastname+
                     "\n" +
-                    "Votre formateur.rice vous a assigné un le nouveau brief "+  brief +"  dans le cadre d’un projet de groupe !\n" +
+                    "Votre formateur vous a assigné un le nouveau brief "+  brief +"  dans le cadre d’un projet de groupe !\n" +
                     "\n" +
                     "Rendez-vous sur la plateforme pour le consulter avec le reste de votre groupe. Définissez et créez les tâches au sein de ce projet dont vous allez vous occuper individuellement.\n" +
                     "\n" +
-                    "Une fois que vous aurez chacun.e soumis vos rendus, votre formateur.rice pourra consulter vos tâches, l'ensemble du (ou des) rendu(s) et vous évaluer.\n" +
+                    "Une fois que vous aurez chacun.e soumis vos rendus, votre formateur pourra consulter vos tâches, l'ensemble du (ou des) rendu(s) et vous évaluer.\n" +
                     "\n" +
-                    "En cas de questions, contactez votre formateur ou formatrice.\n" +
+                    "En cas de questions, contactez votre formateur \n" +
                     "\n" +
                     "A bientôt,\n" +
                     "L’équipe Simplonline.");
