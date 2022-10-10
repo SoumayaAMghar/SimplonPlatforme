@@ -1,4 +1,4 @@
-package service;
+/*package service;
 
 import java.util.ArrayList;
 
@@ -15,3 +15,4 @@ public class PromotionService {
         }
     }
 }
+*/

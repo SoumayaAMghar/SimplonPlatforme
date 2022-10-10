@@ -1,103 +1,77 @@
 package service;
-
-import service.AdminService;
-
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.text.Format;
 import java.util.Scanner;
+
+import dao.admin;
+import dao.formateur;
 
 public class FormateurService {
 
-    protected static Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
+    private int indiceformateur;
 
-    private ArrayList<Brief> briefs = new ArrayList<>();
-    private static int indiceFormateur;
-
-    public static boolean login() {
-        boolean flag = false;
-        ArrayList<Apprenant> students = new ArrayList<>();
-        ArrayList<Brief> briefs = new ArrayList<>();
-        students.add(new Apprenant(true,"soumaya", "amghar", "amghar.souma@gmail.com", "password"));
-        students.add(new Apprenant(true,"abdelghafour", "ettaqui", "ettaqui88@gmail.com", "password1"));
-        students.add(new Apprenant(true, "abdelghafour", "abdelghafour", "ettaqui88@gmail.com", "password2"));
-
-        AdminService.getPromotions().add(new Promotion("alan turing", "formateur1", students, briefs));
-
-        AdminService.getApprenants().add(new Apprenant(true,"firstname2", "lastname2", "ettaqui88@gmail.com", "password2"));
-        AdminService.getApprenants().add(new Apprenant(true,"firstname1", "lastname1", "ettaqui88@gmail.com", "password1"));
-        AdminService.getApprenants().add(new Apprenant(true,"firstname", "lastname", "ettaqui88@gmail.com", "password"));
-        ArrayList<Formateur> formateurs = new ArrayList<>();
-        AdminService.getFormateurs().add(new Formateur("formateur1", "formateur1", "formateur1.com", "formateur1"));
-        AdminService.getFormateurs().add(new Formateur("formateur2", "formateur2", "formateur2.com", "formateur2"));
-        AdminService.getFormateurs().add(new Formateur("formateur3", "formateur3", "formateur3.com", "formateur3"));
-
-
-        System.out.println("Entrer votre email");
+    public boolean login() throws SQLException {
+        System.out.println("entrer votre email");
         String email = scanner.next();
-        System.out.println("Entrer votre password");
+        System.out.println("entrer votre password");
         String password = scanner.next();
-        //System.out.println(service.AdminService.getFormateurs().size());
-        for (int i = 0; i < AdminService.getFormateurs().size(); i++) {
-            if (email.equals(AdminService.getFormateurs().get(i).getEmail()) && password.equals(AdminService.getFormateurs().get(i).getPassword())) {
-                System.out.println("welcome");
-                flag = true;
-                indiceFormateur = i;
-            }
-        }
-        return flag;
+        formateur formateur = new formateur();
+        return formateur.login(email, password);
     }
 
-    public void AddApprenant() {
+    /*public void addapprenant() {
 
-        System.out.println("Voici la liste des apprenants");
-        for (int i = 0; i < AdminService.getApprenants().size(); i++) {
-                    System.out.println(AdminService.getApprenants().get(i));
+        System.out.println("voici la liste des apprenants");
+        for (int i = 0; i < adminservice.getapprenants().size(); i++) {
+            System.out.println(adminservice.getapprenants().get(i));
 
 
         }
-        for (int i = 0; i < AdminService.getPromotions().size(); i++) {
-            if (AdminService.getPromotions().get(i).getFormateurName().equals(AdminService.getFormateurs().get(i).getLastname())) {
-                System.out.println("entrer la list des apprenants sous forme de (1-2-3-4-5)");
-                String[] list = scanner.next().split("-");
-                for (String s : list) {
-                    System.out.println(s);
-                    AdminService.getPromotions().get(i).getStudents().add(AdminService.getApprenants().get(Integer.parseInt(s)));
+        for (int i = 0; i < adminservice.getpromotions().size(); i++) {
+            if (adminservice.getpromotions().get(i).getformateurname().equals(adminservice.getformateurs().get(i).getlastname())) {
+                system.out.println("entrer la list des apprenants sous forme de (1-2-3-4-5)");
+                string[] list = scanner.next().split("-");
+                for (string s : list) {
+                    system.out.println(s);
+                    adminservice.getpromotions().get(i).getstudents().add(adminservice.getapprenants().get(integer.parseint(s)));
                 }
-                AdminService.DisplayPromotion();
+                adminservice.displaypromotion();
             } else {
-                System.out.println("Ce formateur n'est pas créer");
+                system.out.println("ce formateur n'est pas créer");
             }
         }
     }
 
-    public void AddBrief() {
-        String briefTitle;
-        String briefContext;
-        System.out.println("Entrer le titre du brief");
-        briefTitle = scanner.next();
-        System.out.println("Enter la description du brief");
-        briefContext = scanner.next();
-        briefs.add(new Brief(briefTitle, briefContext, AdminService.getFormateurs().get(indiceFormateur)));
-        System.out.println(briefs);
+    public void addbrief() {
+        string brieftitle;
+        string briefcontext;
+        system.out.println("entrer le titre du brief");
+        brieftitle = scanner.next();
+        system.out.println("enter la description du brief");
+        briefcontext = scanner.next();
+        briefs.add(new brief(brieftitle, briefcontext, adminservice.getformateurs().get(indiceformateur)));
+        system.out.println(briefs);
     }
 
-    public void AssignBrief() {
+    public void assignbrief() {
 
-        System.out.println("Voici la liste des briefs");
-        //System.out.println(briefs);
+        system.out.println("voici la liste des briefs");
+        //system.out.println(briefs);
         for (int i = 0; i < briefs.size(); i++) {
-            if (AdminService.getFormateurs().get(indiceFormateur).equals(briefs.get(i).getFormateur())) {
-                System.out.println(briefs.get(i));
+            if (adminservice.getformateurs().get(indiceformateur).equals(briefs.get(i).getformateur())) {
+                system.out.println(briefs.get(i));
             }
         }
-        System.out.println("Entrer l'indice du brief(s) à distribuer sous forme de(0-1-2-3)");
-        String[] listBriefs = scanner.next().split("-");
-        for (int j = 0; j < AdminService.getPromotions().size(); j++) {
-            if (AdminService.getFormateurs().get(indiceFormateur).getLastname().equals(AdminService.getPromotions().get(j).getFormateurName())) {
-                for (int i = 0; i < listBriefs.length; i++) {
-                    AdminService.getPromotions().get(i).getBriefs().add(briefs.get(Integer.parseInt(listBriefs[i])));
-                    System.out.println(AdminService.getPromotions());
-                    for (int m =0 ;m<AdminService.getPromotions().get(j).getStudents().size();m++){
-                        SendingEmail.send(AdminService.getPromotions().get(j).getStudents().get(m).getEmail(),AdminService.getPromotions().get(j).getStudents().get(m).getFirstname(),AdminService.getPromotions().get(j).getStudents().get(m).getLastname(),briefs.get(Integer.parseInt(listBriefs[i])).getTitle());
+        system.out.println("entrer l'indice du brief(s) à distribuer sous forme de(0-1-2-3)");
+        string[] listbriefs = scanner.next().split("-");
+        for (int j = 0; j < adminservice.getpromotions().size(); j++) {
+            if (adminservice.getformateurs().get(indiceformateur).getlastname().equals(adminservice.getpromotions().get(j).getformateurname())) {
+                for (int i = 0; i < listbriefs.length; i++) {
+                    adminservice.getpromotions().get(i).getbriefs().add(briefs.get(integer.parseint(listbriefs[i])));
+                    system.out.println(adminservice.getpromotions());
+                    for (int m = 0; m < adminservice.getpromotions().get(j).getstudents().size(); m++) {
+                        sendingemail.send(adminservice.getpromotions().get(j).getstudents().get(m).getemail(), adminservice.getpromotions().get(j).getstudents().get(m).getfirstname(), adminservice.getpromotions().get(j).getstudents().get(m).getlastname(), briefs.get(integer.parseint(listbriefs[i])).gettitle());
                     }
                 }
 
@@ -105,5 +79,5 @@ public class FormateurService {
         }
 
 
-    }
+    }*/
 }

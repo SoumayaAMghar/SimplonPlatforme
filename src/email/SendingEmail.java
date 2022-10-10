@@ -37,7 +37,7 @@ public class SendingEmail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication(Creds.mail, Creds.password);
+                return new PasswordAuthentication("Creds.mai", "Creds.password");
 
             }
 

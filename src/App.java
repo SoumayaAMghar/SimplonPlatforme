@@ -1,5 +1,6 @@
 import service.AdminService;
 import service.FormateurService;
+//import service.FormateurService;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -7,8 +8,8 @@ import java.util.Scanner;
 public class App {
     private static final Scanner scanner = new Scanner(System.in);
     private static AdminService adminService = new AdminService();
-
     private static FormateurService formateurService = new FormateurService();
+
     private static boolean formateur=false;
     private static boolean admin=false;
     private static boolean login=false;
@@ -48,6 +49,7 @@ public class App {
         System.out.println("3- ajouter apprenant ");
         System.out.println("4- display student");
         System.out.println("5- Créer promotion");
+        System.out.println("6- afficher promotion");
         System.out.println("0- Main menu");
 
         switch (scanner.nextInt()) {
@@ -56,6 +58,7 @@ public class App {
             case 3 -> adminService.CreateApprenant();
             case 4 -> adminService.DisplayApprenant();
             case 5 -> adminService.createPromotion();
+            case 6 -> adminService.DisplayPromotion();
             case 0 ->{
                 admin=false;
                 formateur=false;
@@ -64,11 +67,11 @@ public class App {
         }
 
     }
-    public static  void serviceFormateur() throws Exception {
+    public static void serviceFormateur() throws Exception {
 
         if(!login){
 
-           login = FormateurService.login();
+          login = formateurService.login();
         }
         else{
             System.out.println("1- ajouter apprenants à la promotion ");
@@ -77,9 +80,9 @@ public class App {
             System.out.println("0- Main menu");
 
             switch (scanner.nextInt()) {
-                case 1 -> formateurService.AddApprenant();
+             /*   case 1 -> formateurService.AddApprenant();
                 case 2 -> formateurService.AddBrief();
-                case 3 -> formateurService.AssignBrief();
+                case 3 -> formateurService.AssignBrief();*/
                 case 0 ->{
                     admin=false;
                     formateur=false;

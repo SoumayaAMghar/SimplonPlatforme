@@ -1,10 +1,5 @@
 package service;
 import dao.admin;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdminService {
@@ -60,16 +55,16 @@ public class AdminService {
         admin.DisplayFormateurWithoutPromo();
         System.out.println("Veuillez choisir l'id du formateur que vous voulez");
         int formateurId = scanner.nextInt();
+        System.out.println("promoname "+ promoName + "formateurId "+ formateurId);
         admin.createPromotion(promoName, formateurId);
 
         System.out.println("entrer la list des apprenants sous forme de (1-2-3-4-5)");
         String[] list = scanner.next().split("-");
 
-        DisplayPromotion();
     }
 
-    public static void DisplayPromotion(){
-
+    public void DisplayPromotion(){
+        admin.DisplayPromotion();
     }
 
     //

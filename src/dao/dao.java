@@ -10,7 +10,7 @@ public class dao {
     private static final String url ="jdbc:postgresql://localhost:5432/mybrief";
     private static String user="postgres";
     private static String password ="Som@med";
-    protected Connection con = null;
+    protected Connection con ;
     public  Connection connect() {
 
         try {
