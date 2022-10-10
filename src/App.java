@@ -41,19 +41,16 @@ public class App {
                     serviceFormateur();
                 }
             }
-                case 2 ->{
-                    apprenant=true;
-                    while(apprenant){
-                        serviceApprenant();
-                    }
+            case 2 ->{
+                apprenant=true;
+                while(apprenant){
+                    serviceApprenant();
                 }
+            }
             }
         }
 
-
-
     public static void serviceAdmin() throws Exception {
-
         System.out.println("1- ajouter formateur ");
         System.out.println("2- afficher formateur ");
         System.out.println("3- ajouter apprenant ");
@@ -61,7 +58,6 @@ public class App {
         System.out.println("5- Créer promotion");
         System.out.println("6- afficher promotion");
         System.out.println("0- Main menu");
-
         switch (scanner.nextInt()) {
             case 1 -> adminService.CreateFormateur();
             case 2 -> adminService.DisplayFormateur();
@@ -72,42 +68,13 @@ public class App {
             case 0 ->{
                 admin=false;
                 formateur=false;
+                apprenant=false;
                 displayMainMenu();
             }
         }
-
     }
     public static void serviceFormateur() throws Exception {
-
         if(!login){
-
-          login = apprenantService.login();
-        }
-        else{
-            System.out.println("1- ajouter apprenants à la promotion ");
-            System.out.println("2- créer un brief ");
-            System.out.println("3- Distribuer brief(s) ");
-            System.out.println("0- Main menu");
-
-            switch (scanner.nextInt()) {
-              case 1 -> formateurService.addapprenant();
-              case 2 -> formateurService.addbrief();
-              case 3 -> formateurService.assignbrief();
-                case 0 ->{
-                    admin=false;
-                    formateur=false;
-                    displayMainMenu();
-                }
-            }
-
-        }
-
-
-    }
-    public static void serviceApprenant() throws Exception {
-
-        if(!login){
-
             login = formateurService.login();
         }
         else{
@@ -115,7 +82,6 @@ public class App {
             System.out.println("2- créer un brief ");
             System.out.println("3- Distribuer brief(s) ");
             System.out.println("0- Main menu");
-
             switch (scanner.nextInt()) {
                 case 1 -> formateurService.addapprenant();
                 case 2 -> formateurService.addbrief();
@@ -123,12 +89,28 @@ public class App {
                 case 0 ->{
                     admin=false;
                     formateur=false;
+                    apprenant=false;
                     displayMainMenu();
                 }
             }
-
         }
-
-
+    }
+    public static void serviceApprenant() throws Exception {
+        if(!login){
+            login = apprenantService.login();
+        }
+        else{
+            System.out.println("1- display briefs");
+            System.out.println("0- Main menu");
+            switch (scanner.nextInt()) {
+                case 1 -> apprenantService.displayBriefs();
+                case 0 ->{
+                    admin=false;
+                    formateur=false;
+                    apprenant=false;
+                    displayMainMenu();
+                }
+            }
+        }
     }
 }
