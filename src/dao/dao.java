@@ -10,12 +10,12 @@ public class dao {
     private static final String url ="jdbc:postgresql://localhost:5432/mybrief";
     private static String user="postgres";
     private static String password ="Som@med";
-    protected Connection con ;
-    public  Connection connect() {
+    protected static Connection con ;
+    public static Connection connect() {
 
         try {
             con = DriverManager.getConnection(url, user, password);
-            System.out.println("Connected to the PostgreSQL server successfully.");
+            //System.out.println("Connected to the PostgreSQL server successfully.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

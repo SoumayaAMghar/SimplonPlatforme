@@ -3,13 +3,17 @@ import java.sql.SQLException;
 import java.text.Format;
 import java.util.Scanner;
 
-import dao.admin;
-import dao.formateur;
+import dao.*;
+import login.Login;
+
 
 public class FormateurService {
+    public Cookie cookie = new Cookie();
 
     public static Scanner scanner = new Scanner(System.in);
     private int indiceformateur;
+    private admin admin=new admin();
+    private formateur formateur=new formateur();
 
     public boolean login() throws SQLException {
         System.out.println("entrer votre email");
@@ -17,44 +21,37 @@ public class FormateurService {
         System.out.println("entrer votre password");
         String password = scanner.next();
         formateur formateur = new formateur();
-        return formateur.login(email, password);
+        return Login.login(email, password,"formateur");
     }
 
-    /*public void addapprenant() {
+  public void addapprenant() throws SQLException {
 
         System.out.println("voici la liste des apprenants");
-        for (int i = 0; i < adminservice.getapprenants().size(); i++) {
-            System.out.println(adminservice.getapprenants().get(i));
-
-
-        }
-        for (int i = 0; i < adminservice.getpromotions().size(); i++) {
-            if (adminservice.getpromotions().get(i).getformateurname().equals(adminservice.getformateurs().get(i).getlastname())) {
-                system.out.println("entrer la list des apprenants sous forme de (1-2-3-4-5)");
-                string[] list = scanner.next().split("-");
-                for (string s : list) {
-                    system.out.println(s);
-                    adminservice.getpromotions().get(i).getstudents().add(adminservice.getapprenants().get(integer.parseint(s)));
-                }
-                adminservice.displaypromotion();
-            } else {
-                system.out.println("ce formateur n'est pas créer");
-            }
-        }
+        admin.ApprenantsWithoutPromotion();
+        System.out.println("entrer la list des apprenants sous forme de (1-2-3-4-5)");
+        String[] list = scanner.next().split("-");
+        formateur.addapprenant(list,cookie.getIdPromtion());
     }
 
-    public void addbrief() {
-        string brieftitle;
-        string briefcontext;
-        system.out.println("entrer le titre du brief");
+     public void addbrief() throws SQLException {
+        String brieftitle;
+        String briefcontext;
+        System.out.println("entrer le titre du brief");
         brieftitle = scanner.next();
-        system.out.println("enter la description du brief");
+        System.out.println("enter la description du brief");
         briefcontext = scanner.next();
-        briefs.add(new brief(brieftitle, briefcontext, adminservice.getformateurs().get(indiceformateur)));
-        system.out.println(briefs);
+        formateur.addbrief(brieftitle, briefcontext, cookie.getIdPromtion());
+
+    }
+    public void assignbrief() throws SQLException {
+        formateur.Displaybriefs(cookie.getIdPromtion());
+        System.out.println("entrer le id du brief");
+        int idBrief = scanner.nextInt();
+        formateur.UpdatebriefDislpay(idBrief);
+        formateur.sendemail(idBrief,cookie.getIdPromtion());
     }
 
-    public void assignbrief() {
+  /*  public void assignbrief() {
 
         system.out.println("voici la liste des briefs");
         //system.out.println(briefs);

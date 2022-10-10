@@ -1,4 +1,5 @@
 import service.AdminService;
+import service.ApprenantService;
 import service.FormateurService;
 //import service.FormateurService;
 
@@ -9,9 +10,11 @@ public class App {
     private static final Scanner scanner = new Scanner(System.in);
     private static AdminService adminService = new AdminService();
     private static FormateurService formateurService = new FormateurService();
+    private static ApprenantService apprenantService = new ApprenantService();
 
     private static boolean formateur=false;
     private static boolean admin=false;
+    private static boolean apprenant=false;
     private static boolean login=false;
 
     public static void main(String[] args) throws Exception {
@@ -22,6 +25,7 @@ public class App {
     public static void displayMainMenu() throws Exception {
         System.out.println("Si vous etes admin tapez 0");
         System.out.println("Si vous etes formateur tapez 1");
+        System.out.println("Si vous etes apprenant tapez 2");
         int role = scanner.nextInt();
         switch (role){
             case 0 -> {
@@ -36,11 +40,17 @@ public class App {
                 while(formateur){
                     serviceFormateur();
                 }
-
+            }
+                case 2 ->{
+                    apprenant=true;
+                    while(apprenant){
+                        serviceApprenant();
+                    }
+                }
             }
         }
 
-    }
+
 
     public static void serviceAdmin() throws Exception {
 
@@ -71,7 +81,7 @@ public class App {
 
         if(!login){
 
-          login = formateurService.login();
+          login = apprenantService.login();
         }
         else{
             System.out.println("1- ajouter apprenants à la promotion ");
@@ -80,9 +90,36 @@ public class App {
             System.out.println("0- Main menu");
 
             switch (scanner.nextInt()) {
-             /*   case 1 -> formateurService.AddApprenant();
-                case 2 -> formateurService.AddBrief();
-                case 3 -> formateurService.AssignBrief();*/
+              case 1 -> formateurService.addapprenant();
+              case 2 -> formateurService.addbrief();
+              case 3 -> formateurService.assignbrief();
+                case 0 ->{
+                    admin=false;
+                    formateur=false;
+                    displayMainMenu();
+                }
+            }
+
+        }
+
+
+    }
+    public static void serviceApprenant() throws Exception {
+
+        if(!login){
+
+            login = formateurService.login();
+        }
+        else{
+            System.out.println("1- ajouter apprenants à la promotion ");
+            System.out.println("2- créer un brief ");
+            System.out.println("3- Distribuer brief(s) ");
+            System.out.println("0- Main menu");
+
+            switch (scanner.nextInt()) {
+                case 1 -> formateurService.addapprenant();
+                case 2 -> formateurService.addbrief();
+                case 3 -> formateurService.assignbrief();
                 case 0 ->{
                     admin=false;
                     formateur=false;

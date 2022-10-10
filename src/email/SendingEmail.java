@@ -10,7 +10,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class SendingEmail {
+public  class SendingEmail {
 
     public static void send(String toAddress,String firstname,String lastname,String brief) {
 
@@ -37,7 +37,7 @@ public class SendingEmail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("Creds.mai", "Creds.password");
+                return new PasswordAuthentication("soumayaamghardev@gmail.com", "gpqoptmlqjbdpsek");
 
             }
 

@@ -1,18 +1,30 @@
-/*package service;
+package service;
 
-public class ApprenantService{
+import dao.Cookie;
+import dao.apprenant;
+import login.Login;
 
-    public ApprenantService ()
-    {
+import java.sql.SQLException;
+import java.util.Scanner;
 
+public class ApprenantService {
+    public static Scanner scanner = new Scanner(System.in);
+    public Cookie cookie = new Cookie();
+    public apprenant apprenant = new apprenant();
+    public boolean login() throws SQLException {
+        System.out.println("entrer votre email");
+        String email = scanner.next();
+        System.out.println("entrer votre password");
+        String password = scanner.next();
+
+        return Login.login(email, password,"apprenant");
     }
-    public void display(Apprenant apprenant){
-        //System.out.println("id "+this.getFirstname());
-        System.out.print("firstname: "+apprenant.getFirstname());
-        System.out.print(", lastname "+apprenant.getLastname());
-        System.out.print(", email "+apprenant.getEmail());
-        System.out.println(", password "+apprenant.getPassword());
-    }
 
+    public void displayBriefs() throws SQLException {
+        System.out.println("-----------brief available------------");
+        apprenant.Displaybriefs(cookie.getIdPromtion());
+    }
 }
-*/
+
+
+
