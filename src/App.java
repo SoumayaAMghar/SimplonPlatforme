@@ -69,6 +69,7 @@ public class App {
                 admin=false;
                 formateur=false;
                 apprenant=false;
+                login=false;
                 displayMainMenu();
             }
         }
@@ -90,6 +91,7 @@ public class App {
                     admin=false;
                     formateur=false;
                     apprenant=false;
+                    login=false;
                     displayMainMenu();
                 }
             }
@@ -108,6 +110,7 @@ public class App {
                     admin=false;
                     formateur=false;
                     apprenant=false;
+                    login=false;
                     displayMainMenu();
                 }
             }
